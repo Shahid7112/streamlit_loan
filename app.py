@@ -10,7 +10,7 @@ def main():
     st.write('Fill in the details below to get the loan approval prediction:')
 
     # Load the dataset
-    df = pd.read_csv('dataset.csv')
+    df = pd.read_csv('loan_approval_dataset.csv')
 
     # Input fields for user to enter data
     no_of_dependents = st.number_input('Number of Dependents', min_value=0, max_value=10, step=1)
