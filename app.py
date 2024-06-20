@@ -3,7 +3,7 @@ import joblib
 import pandas as pd
 
 # Load the trained model
-model = joblib.load('random_forest_classifier.pkl')
+model = joblib.load('random_forest_classifier_updated.pkl')
 
 def main():
     st.title('Loan Approval Prediction')
@@ -14,16 +14,16 @@ def main():
 
     # Input fields for user to enter data
     no_of_dependents = st.number_input('Number of Dependents', min_value=0, max_value=10, step=1)
-    education = st.selectbox('Education', df['education'].unique())
+    education = st.selectbox('Education', df[' education'].unique())
     self_employed = st.radio('Self Employed', ['Yes', 'No'])
-    income_annum = st.number_input('Annual Income', min_value=float(df['income_annum'].min()), format='%f')
-    loan_amount = st.number_input('Loan Amount', min_value=float(df['loan_amount'].min()), format='%f')
-    loan_term = st.number_input('Loan Term (Months)', min_value=int(df['loan_term'].min()), format='%d')
-    cibil_score = st.number_input('CIBIL Score', min_value=int(df['cibil_score'].min()), max_value=int(df['cibil_score'].max()), step=1)
-    residential_assets_value = st.number_input('Residential Assets Value', min_value=float(df['residential_assets_value'].min()), format='%f')
-    commercial_assets_value = st.number_input('Commercial Assets Value', min_value=float(df['commercial_assets_value'].min()), format='%f')
-    luxury_assets_value = st.number_input('Luxury Assets Value', min_value=float(df['luxury_assets_value'].min()), format='%f')
-    bank_asset_value = st.number_input('Bank Asset Value', min_value=float(df['bank_asset_value'].min()), format='%f')
+    income_annum = st.number_input('Annual Income', min_value=float(df[' income_annum'].min()), format='%f')
+    loan_amount = st.number_input('Loan Amount', min_value=float(df[' loan_amount'].min()), format='%f')
+    loan_term = st.number_input('Loan Term (Months)', min_value=int(df[' loan_term'].min()), format='%d')
+    cibil_score = st.number_input('CIBIL Score', min_value=int(df[' cibil_score'].min()), max_value=int(df[' cibil_score'].max()), step=1)
+    residential_assets_value = st.number_input('Residential Assets Value', min_value=float(df[' residential_assets_value'].min()), format='%f')
+    commercial_assets_value = st.number_input('Commercial Assets Value', min_value=float(df[' commercial_assets_value'].min()), format='%f')
+    luxury_assets_value = st.number_input('Luxury Assets Value', min_value=float(df[' luxury_assets_value'].min()), format='%f')
+    bank_asset_value = st.number_input('Bank Asset Value', min_value=float(df[' bank_asset_value'].min()), format='%f')
 
     # Make prediction when 'Predict' button is clicked
     if st.button('Predict'):
@@ -44,7 +44,7 @@ def main():
         input_df = pd.DataFrame(input_data)
 
         # Convert categorical variable (education) to dummy/indicator variables
-        input_df = pd.get_dummies(input_df, columns=['education'])
+        input_df = pd.get_dummies(input_df, columns=[' education'])
 
         # Make prediction using the loaded model
         prediction = model.predict(input_df)
