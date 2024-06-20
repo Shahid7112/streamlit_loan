@@ -1,0 +1,12 @@
+# Ignore venv directory
+venv/
+
+# Ignore system-specific Python files
+*.pyc
+__pycache__/
+
+# Ignore IDE or editor specific files
+.vscode/
+.idea/
+*.suo
+*.log
